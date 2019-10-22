@@ -47,3 +47,5 @@ COPY recycling_classification ./recycling_classification/
 # install libraries
 RUN pip install -U pip
 RUN pip install -r requirements.txt
+
+CMD /bin/bash /recycling_classification/entrypoint.sh
