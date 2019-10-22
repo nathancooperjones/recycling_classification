@@ -42,12 +42,8 @@ ENV DATA_DIR=/data
 COPY setup.py ./
 COPY README.md ./
 COPY requirements.txt ./
-COPY download_data.sh ./
-COPY entrypoint.sh ./
 COPY recycling_classification ./recycling_classification/
 
 # install libraries
 RUN pip install -U pip
 RUN pip install -r requirements.txt
-
-CMD /bin/bash /recycling_classification/entrypoint.sh
