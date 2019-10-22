@@ -1,0 +1,4 @@
+*.ipynb_checkpoints*
+
+# why do Macs do this
+.DS_Store
