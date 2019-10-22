@@ -1,0 +1,15 @@
+awscli
+boto3
+fastai
+flasgger
+Flask
+gunicorn
+jupyterlab
+Pillow
+requests
+s3fs
+structlog
+torch
+torchvision
+
+-e .
