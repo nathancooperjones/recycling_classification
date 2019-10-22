@@ -1,0 +1,281 @@
+body {
+  max-width: 100vw;
+  margin: 0;
+}
+body .container .header-bar {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #026928;
+}
+body .container .header-bar a {
+  color: #FFE303;
+}
+body .container .page-contents-results img {
+  min-height: 100vh;
+  display: block;
+  margin: auto;
+}
+body .container .page-contents-results h1 {
+  margin-left: 2vw;
+  text-align: center;
+}
+body .container .page-contents-results .trash-results {
+  position: absolute;
+  width: 100vw;
+  background-color: rgba(255, 0, 0, 0.7);
+  font-size: 10vh;
+  text-align: center;
+  top: 15vh;
+  font-weight: bold;
+  color: #FFE303;
+}
+body .container .page-contents-results .recyclable-results {
+  position: absolute;
+  width: 100vw;
+  background-color: rgba(2, 105, 40, 0.7);
+  font-size: 10vh;
+  text-align: center;
+  top: 15vh;
+  font-weight: bold;
+  color: #FFE303;
+}
+body .container .info-page-contents {
+  background: whitesmoke;
+  max-width: 100vw;
+  color: #026928;
+  padding-top: 1vh;
+  padding-bottom: 2.5vh;
+}
+body .container .info-page-contents h1 {
+  margin: 1vh 1vw;
+  text-align: center;
+}
+body .container .mission-page-contents {
+  background: whitesmoke;
+  max-width: 100vw;
+  color: #026928;
+  padding-top: 1vh;
+  padding-bottom: 2.5vh;
+}
+body .container .mission-page-contents h1 {
+  margin: 1vh 1vw;
+  text-align: center;
+}
+body .container .page-contents {
+  max-width: 100vw;
+  height: 90vh;
+  padding: 2vh 2vw;
+}
+body .container .page-contents h1 {
+  margin: 1vh 1vw;
+  margin-top: 0;
+  text-align: center;
+}
+body .container .page-contents a {
+  display: flex;
+  align-items: center;
+  font-size: 8vh;
+  justify-content: center;
+}
+body .container .page-contents a svg {
+  border: 1px solid #026928;
+  color: #026928;
+  border-radius: 50%;
+  height: 8vh;
+  width: 8vw;
+  margin-left: 2vw;
+}
+body .container .page-contents img {
+  min-height: 100vh;
+  margin: auto;
+  display: none;
+}
+body .container .page-contents form {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100vw;
+}
+body .container .page-contents form input {
+  display: none;
+}
+body .container .page-contents form button {
+  border: none;
+  font-size: 4vh;
+  color: #FFE303;
+  padding: 1.5vh 1.5vw;
+  border-radius: 1vw;
+  background-color: #026928;
+}
+body .container .page-contents form label.btn {
+  display: flex;
+  align-items: center;
+  font-size: 4vh;
+  border: 1px solid #026928;
+  border-radius: 1vw;
+  padding: 1.5vh 1.5vw;
+  color: #026928;
+}
+
+div.recycling-facts h2 {
+  color: #026928;
+  background: #FFE303;
+  font-size: 4vh;
+  margin-bottom: 0;
+  padding: 2vh 6vw;
+}
+div.recycling-facts div.recycling-facts-list {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: 1fr 7fr;
+  margin: 2vh 12vw;
+}
+div.recycling-facts div.recycling-facts-list div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #026928;
+  border-radius: 50%;
+  padding: 1vh 1vw;
+  color: #026928;
+  background: #FFE303;
+  margin: 0.5vh 0.5vw;
+  width: 5vw;
+}
+div.recycling-facts div.recycling-facts-list div h4 {
+  margin: 0;
+  font-size: 1.25vh;
+}
+div.recycling-facts div.recycling-facts-list div h3 {
+  margin: 0;
+  font-size: 4vh;
+}
+div.recycling-facts div.recycling-facts-list p {
+  font-weight: 600;
+  font-size: 3vh;
+  margin-left: 2vw;
+}
+
+div.recycling-chicago h2 {
+  color: #026928;
+  background: #FFE303;
+  margin-bottom: 0;
+  padding: 2vh 6vw;
+}
+div.recycling-chicago div.recycling-chicago-information {
+  display: flex;
+  margin: 3vh 2vw;
+}
+div.recycling-chicago div.recycling-chicago-information figure {
+  margin: 0;
+}
+div.recycling-chicago div.recycling-chicago-information figure img {
+  max-width: 60vw;
+}
+div.recycling-chicago div.recycling-chicago-information figure figcaption {
+  text-align: center;
+}
+div.recycling-chicago div.recycling-chicago-information ul {
+  margin-left: 2vw;
+  display: flex;
+  flex-direction: column;
+}
+div.recycling-chicago div.recycling-chicago-information ul li {
+  padding-bottom: 1.25vh;
+  font-size: 3vh;
+}
+
+div.info-resources h2 {
+  color: #026928;
+  background: #FFE303;
+  margin-bottom: 0;
+  padding: 2vh 6vw;
+}
+div.info-resources ul {
+  margin: 2vh 8vw;
+  display: flex;
+  flex-direction: column;
+}
+div.info-resources ul li {
+  padding-bottom: 1.25vh;
+  font-size: 3vh;
+}
+div.info-resources ul li a {
+  color: #026928;
+}
+div.info-resources ul li a:visited {
+  color: #026928;
+}
+
+div.AI-photos-works {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+div.AI-photos-works figure figcaption {
+  text-align: center;
+}
+div.AI-photos-works figure img {
+  border: 1px solid #026928;
+  max-height: 50vh;
+}
+
+div.UI-pages {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+div.UI-pages figure figcaption {
+  text-align: center;
+}
+div.UI-pages figure img {
+  max-width: 40vw;
+  border: 1px solid #026928;
+}
+
+div.AI-analyzing {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+div.AI-analyzing figure figcaption {
+  text-align: center;
+}
+div.AI-analyzing figure img {
+  width: 40vw;
+  height: 25vh;
+  border: 1px solid #026928;
+}
+
+div.mission-page-contents div.goal h2 {
+  padding: 2vh 6vw;
+  background: #FFE303;
+  font-size: 4vh;
+}
+div.mission-page-contents div.goal p {
+  margin: 1vh 12vw;
+  font-size: 3vh;
+}
+div.mission-page-contents div.method h2 {
+  font-size: 6vh;
+  padding: 2vh 4vw;
+  background: #FFE303;
+}
+div.mission-page-contents div.method p {
+  margin: 1vh 12vw;
+  font-size: 3vh;
+}
+div.mission-page-contents div.helpful h2 {
+  font-size: 4vh;
+  padding: 2vh 6vw;
+  background: #FFE303;
+}
+div.mission-page-contents div.helpful p {
+  margin: 1vh 12vw;
+  font-size: 3vh;
+}
+
+/*# sourceMappingURL=rc.css.map */

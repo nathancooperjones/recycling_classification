@@ -1,0 +1,15 @@
+(in-package :r-html)
+
+(defun upload-photo-html ()
+  (my-html `(:div
+             ((:class "page-contents"))
+             (:h1 "Check if the content of uploaded photo is recyclable")
+             (:form ((:action "photo-results") (:id "upload-photo"))
+                    (:label ((:for "photo-file") (:class "btn"))
+                            "Select Image",(feather-icon "plus"))
+                    (:input ((:type "file") (:name "photo") (:accept "image/*")
+                             ("required") (:id "photo-file")))
+                    (:button ((:type "submit") (:form "upload-photo"))
+                             "Submit Image"))
+             (:img ((:id "upload-image") (:src "#")))))
+  )
