@@ -6,13 +6,15 @@
   :license  "Specify license here"
   :version "0.0.1"
   :serial t
-  :depends-on (#:hunchentoot #:krq-html #:cxml #:cxml-stp)
+  :depends-on (#:drakma #:krq-html #:hunchentoot
+                             #:cl-json)
   :components (
                (:module "html"
                 :serial t
                 :components
                 ((:file "packages")
                  (:file "wrappers")
+                 (:file "recycling-process")
                  (:file "upload-photo")
                  (:file "information")
                  (:file "mission")
@@ -23,6 +25,9 @@
                 :components
                 ((:file "packages")
                  (:file "homepage")
+                 (:file "save-photo")
+                 (:file "analyze")
+                 (:file "results")
                  (:file "information")
                  (:file "mission")))
                (:file "package")

@@ -18,7 +18,6 @@
           hunchentoot:*dispatch-table*))
   )
 
-
 (when nil
   (sb-thread:make-thread #'start-server-recycling)
   )

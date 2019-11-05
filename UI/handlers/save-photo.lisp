@@ -15,10 +15,12 @@
               while (plusp pos)
               do (write-sequence buf output-stream :end pos))))))
 
-(define-easy-handler (analyze-photo :uri "/analyze-photo") (photo)
-  (progn
-    (my-copy-file photo "~/data/recycling/images/raffi.jpg")
-    (redirect "photo-results?photo=raffi.jpg"))
+(define-easy-handler (save-photo :uri "/save-photo") (data)
+  (if data
+      (progn
+        (log-message* :info "~a" data)
+        )
+      (html
+       `(:p "data not uploaded"))
+      )
   )
-
-(my-copy-file "~/data/recycling/ex.HEIF" "~/data/recycling/exHEIF.jpg")

@@ -1,0 +1,78 @@
+(in-package :r-html)
+
+(defun plastic-recycling-process ()
+  `(:ul
+    ((:class "plastic-recycling-process"))
+    (:li "step 1")
+    (:li "step 2")
+    (:li "step 3")
+    (:li "step 4")
+    (:li "step 5")
+    )
+  )
+
+(defun metals-recycling-process ()
+  `(:ul
+    ((:class "metals-recycling-process"))
+    (:li "step 1")
+    (:li "step 2")
+    (:li "step 3")
+    (:li "step 4")
+    (:li "step 5")
+    )
+  )
+
+(defun paper-recycling-process ()
+  `(:ul
+    ((:class "paper-recycling-process"))
+    (:li "step 1")
+    (:li "step 2")
+    (:li "step 3")
+    (:li "step 4")
+    (:li "step 5")
+    )
+  )
+
+(defun glass-recycling-process ()
+  `(:ul
+    ((:class "glass-recycling-process"))
+    (:li "Remove plastic and metal lids and place them in a separate recycling bin.")
+    (:li "Rinse out glasses with water")
+    (:li "Place glasses into a recycling container dedicated for glass")
+    (:li "step 4")
+    (:li "step 5")
+    )
+  )
+
+(defun electronics-recycling-process ()
+  `(:ul
+    ((:class "electronics-recycling-process"))
+    (:li "step 1")
+    (:li "step 2")
+    (:li "step 3")
+    (:li "step 4")
+    (:li "step 5")
+    )
+  )
+
+(defun bulbs-recycling-process ()
+  `(:ul
+    ((:class "bulbs-recycling-process"))
+    (:li "step 1")
+    (:li "step 2")
+    (:li "step 3")
+    (:li "step 4")
+    (:li "step 5")
+    )
+  )
+
+(defun batteries-recycling-process ()
+  `(:ul
+    ((:class "batteries-recycling-process"))
+    (:li "step 1")
+    (:li "step 2")
+    (:li "step 3")
+    (:li "step 4")
+    (:li "step 5")
+    )
+  )
