@@ -2,3 +2,9 @@
 
 # why do Macs do this
 .DS_Store
+
+# why do Macs do this
+.DS_Store
+
+# Ignore all data in `data` directory
+data/*

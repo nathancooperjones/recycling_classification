@@ -1,11 +1,11 @@
 #!/bin/bash
 
-sh /seeker/download_data.sh
+sh /recycling_classification/download_data.sh
 
-cd /seeker/seeker/
+cd /recycling_classification/recycling_classification/
 
 gunicorn app:app \
-    -b 0.0.0.0:8000 \
+    -b 0.0.0.0:80 \
     --log-file - \
     --error-logfile - \
     --access-logfile - \

@@ -34,10 +34,15 @@ docker run \
     -v "${RECYCLE_DATA_PATH}:/data" \
     -v "${PWD}:/recycling_classification" \
     -p 8888:8888 \
-    -p 8000:8000 \
+    -p 80:80 \
     -e AWS_ACCESS_KEY_ID="$(aws --profile default configure get aws_access_key_id)" \
     -e AWS_SECRET_ACCESS_KEY="$(aws --profile default configure get aws_secret_access_key)" \
     recycling_classification /bin/bash -c "pip install -r requirements-dev.txt && bash"
+```
+
+Note: If you want to override which model is downloaded, you can set the S3 path(s) for the object by passing an environment variable in with the `docker run` command, e.g.
+```bash
+    -e MODEL_FILENAME="other/url/here/new_model.pkl" \
 ```
 
 Before starting the app, download the desired model and mapping dictionary with:
@@ -56,7 +61,7 @@ bash run_app.sh
 
 In either setup, we can still make requests to the service with
 ```bash
-curl -X GET http://0.0.0.0:8000/health
+curl -X GET http://0.0.0.0:80/health
 ```
 
 ### Start Jupyter Lab
