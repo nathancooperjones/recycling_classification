@@ -11,7 +11,7 @@ Using `fastai`'s deep learning library, this is a small project made to do just 
 ### App Functionality Checklist
 - [X] Curate initial dataset
 - [X] Create preliminary deep learning model with this initial dataset
-- [ ] Set up Flask app to accept images and return predicted recyclable class
+- [X] Set up Flask app to accept images and return predicted recyclable class
 - [ ] Advance image dataset to include more real-world examples, more categories, etc.
 - [ ] Create more advanced deep learning model with this newer dataset
 - [ ] Use object detection model to determine recyclable class for many objects in an image
@@ -70,3 +70,30 @@ To run jupyterlab, start the container and execute the following:
 jupyter lab --ip 0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''
 ```
 Connect to Jupyter here: [http://localhost:8888/tree?](http://localhost:8888/tree?)
+
+## Unit Tests
+There are two types of unit tests in this repo to be run in the Docker container:
+
+1. Library Unit Tests
+2. RESTful API Unit Tests
+
+#### Run Library Unit Tests
+```bash
+# execute unit tests
+pytest -v tests/recycling_classification
+```
+
+#### Run RESTful API Unit Tests
+```bash
+# Start a tmux multiplexer
+tmux
+
+# Start API service
+bash entrypoint.sh
+
+# split terminal window in tmux
+# ctrl + b , "
+
+# In new terminal window
+pytest -v tests/app
+```

@@ -7,7 +7,8 @@ import structlog
 
 
 # load the fastai model
-LEARNER = load_learner('/recycling_classification/data', file=os.environ['MODEL_FILENAME'])
+LEARNER = load_learner(os.path.join('/recycling_classification/', os.environ['DATA_DIR']),
+                       file=os.environ['MODEL_FILENAME'])
 
 # Set up logging.
 logging.basicConfig(format='%(message)s', stream=sys.stdout, level=logging.INFO)

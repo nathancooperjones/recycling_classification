@@ -1,2 +1,0 @@
-recycling_classification
-tests

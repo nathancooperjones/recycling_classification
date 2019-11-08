@@ -1,12 +1,11 @@
 import os
 from tempfile import NamedTemporaryFile
-from urllib.parse import urlparse
 
 import boto3
 from fastai.vision import load_learner
 
 
-def file_to_s3(filename, s3_path):
+def file_to_s3(filename, s3_path=None):
     """
     Upload file to S3.
 
@@ -25,17 +24,20 @@ def file_to_s3(filename, s3_path):
     """
     if s3_path is None:
         s3_path = os.getenv('S3_PATH')
+        if s3_path is None:
+            error_message = ('Environment variable $S3_PATH not found. '
+                             'Set this variable or pass in the `s3_path` argument.')
+            raise ValueError(error_message)
         s3_path = os.path.join(s3_path, filename)
     bucket, key = get_bucket_and_key(s3_path)
 
     s3_client = boto3.client('s3')
-
     s3_client.upload_file(filename, bucket, key)
 
     print('Saved file to: {}'.format(s3_path))
 
 
-def file_from_s3(s3_path, filename='data/'):
+def file_from_s3(s3_path, filename=None):
     """
     Load model from S3.
 
@@ -44,17 +46,19 @@ def file_from_s3(s3_path, filename='data/'):
     s3_path: string
         S3 path to bucket to download file from
     filename: string
-        location to save file to on local machine (default 'data/')
+        location to save file to on local machine. If `None`, defaults to $DATA_DIR (default None)
 
     Side Effects
     -------------
     Downloads file to local machine, overwriting a file with the exact name if it exists.
 
     """
+    if filename is None:
+        filename = os.environ['DATA_DIR']
+
     bucket, key = get_bucket_and_key(s3_path)
 
     s3_client = boto3.client('s3')
-
     s3_client.download_file(bucket, key, filename)
 
     print('Downloaded file to: {}'.format(filename))
@@ -123,6 +127,8 @@ def get_bucket_and_key(s3_path):
     s3_path: string
         S3 path to bucket
         Ex: s3://recycling-classification/folder/file.pkl
+        Ex: /recycling-classification/folder/file.pkl
+        Ex: recycling-classification/folder/file.pkl
 
     Returns
     -------------
@@ -132,7 +138,7 @@ def get_bucket_and_key(s3_path):
         folder/file.pkl
 
     """
-    parsed_url = urlparse(s3_path, allow_fragments=False)
-    bucket = parsed_url.netloc
-    key = parsed_url.path.lstrip('/')
+    split_path = s3_path.replace('s3://', '').lstrip('/').split('/')
+    bucket = split_path.pop(0)
+    key = '/'.join(split_path)
     return bucket, key

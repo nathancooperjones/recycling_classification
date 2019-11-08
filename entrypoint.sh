@@ -10,6 +10,6 @@ gunicorn app:app \
     --error-logfile - \
     --access-logfile - \
     --access-logformat "%(h)s %(t)s %(m)s %(U)s %(s)s %(L)s" \
-    --workers 1 \
-    --threads 6 \
+    --workers 4 \
+    --threads 16 \
     --timeout 3600

@@ -45,7 +45,7 @@ def predict_recylable_from_image_url():
     Get recycling item class prediction and probability from a `fastai` model.
     This endpoint accepts an image `url` as a query argument. It returns the recycling image
     `url`, `class`, and `probability` (probability of being that class) based on the image.
-    To access the API Docs, visit host:port/apidocs (e.g.: 0.0.0.0:8000/apidocs)
+    To access the API Docs, visit host:port/apidocs (e.g.: 0.0.0.0:80/apidocs)
     ---
     tags:
       - Probability of recycling class from image URL
@@ -79,10 +79,18 @@ def predict_recylable_from_image_url():
         response = requests.get(url)
         image_from_interwebs = im.open_image(BytesIO(response.content))
         g.log = g.log.bind(image_opened=True)
+    except Exception as e:
+        print(e)
+        abort(400, 'Unable to open image specified in `url`. Check API docs for usage.')
 
+    try:
         pred_class, _, pred_probs = LEARNER.predict(image_from_interwebs)
         g.log = g.log.bind(prediction_made=True)
+    except Exception as e:
+        print(e)
+        abort(400, 'Issue getting model prediction for image. Check API docs for usage.')
 
+    try:
         output = {
             'url': url,
             'class': pred_class.obj,
@@ -91,7 +99,7 @@ def predict_recylable_from_image_url():
         return jsonify(output)
     except Exception as e:
         print(e)
-        abort(400, 'Issue in `predict_recylable_from_image_url` endpoint. Check API docs for usage.')
+        abort(400, 'Issue JSON-ifying output. Check API docs for usage.')
 
 
 @app.route('/health', methods=['GET'])

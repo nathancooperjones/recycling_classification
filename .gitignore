@@ -8,3 +8,6 @@
 
 # Ignore all data in `data` directory
 data/*
+
+# Ignore pycache
+__pycache__/

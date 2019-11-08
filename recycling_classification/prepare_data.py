@@ -1,12 +1,12 @@
+import hashlib
 import os
 
-import hashlib
 from fastai.vision import get_image_files, verify_images
 
 
 def validate_images(image_path, ext='jpg'):
     """
-    Validate images to ensure they can all open and are not exact duplicates of one another.
+    Validate images to ensure they can all open and do not have duplicates in the image directory.
 
     Parameters
     -------------
@@ -18,7 +18,7 @@ def validate_images(image_path, ext='jpg'):
     Side Effects
     -------------
     This function permanantely deletes invalid images that it cannot open, are not
-    able to be converted to 'jpg's, or are duplicates of another image.
+    able to be converted to 'jpg's, or are duplicates of another image in the `image_path`.
 
     """
     # start with fastai `verify_images` to ensure we can open each image
@@ -28,6 +28,7 @@ def validate_images(image_path, ext='jpg'):
                   ext=ext)
 
     # check for duplicate images by hashing
+    # modified from: https://medium.com/@urvisoni/removing-duplicate-images-through-python-23c5fdc7479e
     print('Checking for duplicate images by hashing...')
     duplicates = list()
     hash_keys = dict()
