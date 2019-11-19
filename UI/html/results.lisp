@@ -185,8 +185,6 @@
         ".json"))
     (cl-json:decode-json-from-source stream)))
 
-(open-file-tester "metals")
-
 ;; (http-request-json
 ;;  "http://3.134.39.167/predict_recylable_from_image_url?url=https://noahquanrud.com/recycling/resources/images/metal.jpg"
 ;;  )
@@ -194,11 +192,11 @@
 ;; (classify-photo-url
 ;;  "http://3.134.39.167/predict_recylable_from_image_url?url=https://noahquanrud.com/recycling/resources/images/metal.jpg")
 
-(get-probability-from-json
- (with-open-file
-     (stream
-      "~/common-lisp/recycling/recycling_classification/ui/resources/testing/ex.json")
-   (cl-json:decode-json-from-source stream)))
+;; (get-probability-from-json
+;;  (with-open-file
+;;      (stream
+;;       "~/common-lisp/recycling/recycling_classification/ui/resources/testing/ex.json")
+;;    (cl-json:decode-json-from-source stream)))
 
 ;; (defun metal-subcategories (subcategory)
 ;;   (cond
