@@ -30,7 +30,7 @@
       (:div
        ((:class "recycling-chicago-information"))
        (:figure
-        (:img ((:src "resources/images/information/ChicagoRecyclingBinZones.png")))
+        (:img ((:src "resources/pages/information/ChicagoRecyclingBinZones.png")))
         (:figcaption
          "Source from "
          (:a ((:href "https://projects.bettergov.org/2018/recycling-chicago/"))

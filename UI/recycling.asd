@@ -7,7 +7,7 @@
   :version "0.0.1"
   :serial t
   :depends-on (#:drakma #:krq-html #:hunchentoot
-                             #:cl-json)
+                             #:cl-json #:necessity)
   :components (
                (:module "html"
                 :serial t

@@ -20,5 +20,3 @@
     (my-copy-file photo "~/data/recycling/images/raffi.jpg")
     (redirect "photo-results?photo=raffi.jpg"))
   )
-
-(my-copy-file "~/data/recycling/ex.HEIF" "~/data/recycling/exHEIF.jpg")

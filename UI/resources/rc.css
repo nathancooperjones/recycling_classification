@@ -12,8 +12,94 @@ body .container .header-bar {
 body .container .header-bar a {
   color: #FFE303;
 }
+body .container .page-contents-results {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  border-bottom: 2vh solid #026928;
+  border-left: 1vw solid #026928;
+  border-right: 1vw solid #026928;
+  background: #026928;
+  grid-gap: 1.5vw;
+}
+body .container .page-contents-results .photo-analysis-image-results {
+  background: white;
+  border-top: 0.75vh solid #FFE303;
+  border-left: 0.3vw solid #FFE303;
+  border-right: 0.3vw solid #FFE303;
+}
+body .container .page-contents-results .photo-analysis-results-info {
+  width: 38vw;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 1.5vh;
+}
+body .container .page-contents-results .photo-analysis-results-info .recycling-process {
+  background: white;
+  border-top: 0.75vh solid #FFE303;
+  border-left: 0.3vw solid #FFE303;
+  border-right: 0.3vw solid #FFE303;
+  border-bottom: 0.75vh solid #FFE303;
+  color: #026928;
+}
+body .container .page-contents-results .photo-analysis-results-info .recycling-process h2 {
+  font-size: 4vw;
+  text-align: center;
+  color: #026928;
+  margin: 0;
+}
+body .container .page-contents-results .photo-analysis-results-info .recycling-process ul {
+  margin: 0;
+  color: #026928;
+  padding-left: 2vw;
+}
+body .container .page-contents-results .photo-analysis-results-info .recycling-information {
+  background: white;
+  border-top: 0.75vh solid #FFE303;
+  border-left: 0.3vw solid #FFE303;
+  border-right: 0.3vw solid #FFE303;
+  border-bottom: 0.75vh solid #FFE303;
+  color: #026928;
+}
+body .container .page-contents-results .photo-analysis-results-info .recycling-information h2 {
+  font-size: 4vw;
+  text-align: center;
+  color: #026928;
+  margin: 0;
+}
+body .container .page-contents-results .photo-analysis-results-info .recycling-information ul {
+  margin: 0;
+  color: #026928;
+  padding-left: 2vw;
+}
+body .container .page-contents-results .photo-analysis-results .recyclable-result .recyclable-classification {
+  background: rgba(255, 227, 3, 0.8);
+  width: 57.3vw;
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6vh;
+  position: absolute;
+  top: 20vh;
+  font-weight: bolder;
+  color: #026928;
+}
+body .container .page-contents-results .photo-analysis-results .recyclable-result .recyclable-confidence {
+  background: rgba(255, 227, 3, 0.9);
+  width: 57.3vw;
+  height: 4vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3vh;
+  position: absolute;
+  color: #026928;
+  bottom: 1.25vh;
+}
 body .container .page-contents-results img {
-  min-height: 100vh;
+  min-height: 88vh;
+  max-height: 88vh;
+  max-width: 57.3vw;
   display: block;
   margin: auto;
 }
@@ -97,9 +183,9 @@ body .container .page-contents form {
   justify-content: space-evenly;
   align-items: center;
   width: 100vw;
-}
-body .container .page-contents form input {
-  display: none;
+  /* input{ */
+  /*   display:none; */
+  /* } */
 }
 body .container .page-contents form button {
   border: none;

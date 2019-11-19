@@ -1,43 +1,38 @@
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
+var photo_url;
 
-        reader.onload = function(e) {
-            photo_url = e.target.result;
-            $('#upload-image').attr('src', e.target.result);
-            $('#upload-image').attr('style',"display: block;");
-        };
+// function readURL(input) {
+//     if (input.files && input.files[0]) {
+//         var reader = new FileReader();
 
-        reader.readAsDataURL(input.files[0]);
-    }
-}
+//         reader.onload = function(e) {
+//             photo_url = e.target.result;
+//             $('#upload-image').attr('src', e.target.result);
+//             $('#upload-image').attr('style',"display: block;");
+//         };
 
-$("#photo-file").change(function() {
-    readURL(this);
-});
+//         reader.readAsDataURL(input.files[0]);
+//     }
+// }
 
-$('#photo-file').change(function(){
-    var frm = new FormData();
-    frm.append('#photo-file', input.files[0]);
-    $.ajax({
-        method: 'POST',
-        address: 'resources/image',
-        data: frm,
-        contentType: false,
-        processData: false,
-        cache: false
+var blob_url;
+
+window.addEventListener('load', function() {
+    document.querySelector('input[type="file"]').addEventListener('change', function() {
+        if (this.files && this.files[0]) {
+            var img = document.querySelector('img');  // $('img')[0]
+            img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+            img.style.display = "block";
+            blob_url = img.src;
+        }
     });
 });
 
+// $("#photo-file").change(function() {
+//     readURL(this);
+// });
 
 function uploadFile() {
     var blobFile = $('#photo-file');
-    const mediaStream = new MediaStream();
-    blobFile.srcObject = mediaStream;
-    var binary_data = [];
-    binary_data.push(blobFile);
-    var blob_url = URL.createObjectURL(new Blob(binary_data,
-                                                {type: "application/upload"}));
     var fd = new FormData();
     fd.append("data",blob_url);
     $.ajax({
@@ -51,5 +46,26 @@ function uploadFile() {
         }
     }).done(function(data) {
         console.log("uploaded photo");
+    });
+}
+
+function PostRecording(){
+    // Posts the recorded audio to '/upload-wav'
+    recorder && recorder.exportWAV(function(blob){
+        // Do something with blob
+        var fd = new FormData();
+        var chatroom = document.getElementById("chatroom");
+        var chatroom_id = chatroom.getAttribute("value");
+        fd.append('cr-id', chatroom_id);
+        fd.append('data', blob);
+        $.ajax({
+            type: 'POST',
+            url: 'upload-wav',
+            data: fd,
+            processData: false,
+            contentType: false
+        }).done(function(data) {
+            console.log("uploaded wav");
+        });
     });
 }

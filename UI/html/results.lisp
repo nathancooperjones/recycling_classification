@@ -1,41 +1,170 @@
 (in-package :r-html)
 
-(defun photo-results-html (photo)
-  (my-html `(:div
-             ((:class "page-contents-results"))
-             ,(results-maker photo)
-             (:img ((:id "uploaded-image") (:src "resources/images/",photo)))))
+;; (defun photo-results-html (photo-path)
+;;   (my-html `(:div
+;;              ((:class "page-contents-results"))
+;;              ,(results-maker photo-path)
+;;              (:img ((:id "uploaded-image") (:src "resources/images/",photo-path)))))
+;;   )
+
+;; (defun photo-classified-html (photo-path)
+;;   (my-html
+;;    `(:div
+;;      ((:class "page-contents-results"))
+;;      (:div
+;;       ((:class "photo-analysis-image-results"))
+;;       (:div
+;;        ((:class "photo-analysis-results"))
+;;        ,(filler-class-results (ai-analysis-url photo-path)))
+;;       (:img ((:id "uploaded-image") (:src "resources/images/",photo-path))))
+;;      (:div
+;;       ((:class "photo-analysis-results-info"))
+;;       (:div
+;;        ((:class "recycling-process"))
+;;        (:h2 "Recycling Process")
+;;        ,(classes-recycling-process "metals"))
+;;       (:div
+;;        ((:class "recycling-information"))
+;;        (:h2 "Fun Facts")
+;;        ,(classes-recycling-process "metals"))
+;;       )
+;;      )
+;;    )
+;;   )
+
+(defun photo-classified-html (photo-path)
+  (let* ((json (http-request-json (ai-analysis-url (cat photo-path))))
+         (class (get-class-from-json json))
+         (probability (get-probability-from-json json)))
+    (my-html
+     `(:div
+       ((:class "page-contents-results"))
+       (:div
+        ((:class "photo-analysis-image-results"))
+        (:div
+         ((:class "photo-analysis-results"))
+         ,(photo-analysis-results class probability))
+        (:img ((:id "uploaded-image") (:src "resources/images/",photo-path))))
+       (:div
+        ((:class "photo-analysis-results-info"))
+        (:div
+         ((:class "recycling-process"))
+         (:h2 "Recycling Process")
+         ,(classes-recycling-process "metals"))
+        (:div
+         ((:class "recycling-information"))
+         (:h2 "Fun Facts")
+         ,(classes-recycling-process "metals"))
+        )
+       )
+     ))
   )
 
-(defun results-maker (photo)
-  (let ((name (car (split-sequence:split-sequence #\. photo))))
-    (if (equal "raffi" name)
-        `(:div ((:class "trash-results")) "Non-Recyclable")
-        `(:div ((:class "recyclable-results")) "Recyclable"))))
+(defun filler-percentage ()
+  (let ((number (random 8)))
+    (if (< number 7)
+        80
+        60)))
 
-(defun results-classes (class)
-  (cond
-    ((equal class "Metals")
-     `(:p "Classified as metal"))
-    ((equal class "Paper/Cardboard")
-     `(:p "Classified as paper or cardboard"))
-    ((equal class "Glass")
-     `(:p "Classified as glass"))
-    ((equal class "Plastics")
-     `(:p "Classified as plastics"))
-    ((equal class "Bulbs")
-     `(:p "Classified as bulbs"))
-    ((equal class "Electronics")
-     `(:p "Classified as electronics"))
-    ((equal class "Batteries")
-     `(:p "Classified as batteries"))
-    ('t
-     `(:p "Classified as non-recyclable"))
+(defun filler-class-results (url)
+  (let ((number (random 7))
+        (percentage (filler-percentage)))
+    (cond
+      ((equal number 0)
+       (json-analysis-results (json-file-tester "metals"))
+       ;(photo-analysis-results "metals" percentage)
+       )
+      ((equal number 1)
+       (json-analysis-results (json-file-tester "paper_cardboard"))
+       ;(photo-analysis-results "paper_cardboard" percentage)
+       )
+      ((equal number 2)
+       (json-analysis-results (json-file-tester "glass"))
+       ;(photo-analysis-results "glass" percentage)
+       )
+      ((equal number 3)
+       (json-analysis-results (json-file-tester "plastics"))
+       ;(photo-analysis-results "plastics" percentage)
+       )
+      ((equal number 4)
+       (json-analysis-results (json-file-tester "bulbs"))
+       ;(photo-analysis-results "bulbs" percentage)
+       )
+      ((equal number 5)
+       (json-analysis-results (json-file-tester "electronics"))
+       ;(photo-analysis-results "electronics" percentage)
+       )
+      ((equal number 6)
+       (json-analysis-results (json-file-tester "batteries"))
+       ;(photo-analysis-results "batteries" percentage)
+       )
+      )
     )
   )
 
-;; (http-request-json
-;;  "https://stats.nba.com/stats/commonteamroster?LeagueID=00&Season=2017-18&TeamID=1610612756")
+(defparameter *analyze-photo-url-base*
+  "http://3.134.39.167/predict_recylable_from_image_url?url=https://noahquanrud.com/recycling/resources/images/")
+
+(defun ai-analysis-url (photo-path)
+  (cat *analyze-photo-url-base* photo-path))
+
+(defun results-classes (class)
+  (cond
+    ((equal class "metals")
+     "Classified under metal")
+    ((equal class "paper_cardboard")
+     "Classified under paper or cardboard")
+    ((equal class "glass")
+     "Classified under glass")
+    ((equal class "plastics")
+     "Classified under plastics")
+    ((equal class "bulbs")
+     "Classified under bulbs")
+    ((equal class "electronics")
+     "Classified under electronics")
+    ((equal class "batteries")
+     "Classified under batteries")
+    ('t
+     "Classified under non-recyclable")
+    )
+  )
+
+(defun json-analysis-results (json)
+  (let ((class (get-class-from-json json))
+        (probability (get-probability-from-json json)))
+   (photo-analysis-results class probability)))
+
+(defun photo-analysis-results (class probability)
+  (cond
+    ((> probability 75)
+     `(:div
+       ((:class "recyclable-result"))
+       (:div ((:class "recyclable-classification")) (:p "Recyclable"))
+       (:div ((:class "recyclable-confidence"))
+             (:p ,(results-classes class) " with "
+                 ,(format-probability probability) "% confidence")))
+     )
+    ('t
+     `(:div
+       ((:class "recyclable-result"))
+       (:div ((:class "recyclable-classification")) "Unclassified")
+       (:div ((:class "recyclable-confidence"))
+             (:p "Not confident enough to give classification"))))
+    )
+  )
+
+(defun get-class-from-json (json)
+  (cdr (find :class json :test #'equal :key #'car)))
+
+(defun format-probability (probability)
+  (format nil "~1$" probability))
+
+(defun get-probability-from-json (json)
+  (* 100 (cdr (find :probability json :test #'equal :key #'car))))
+
+(defun classify-photo-url (url)
+  (let ((class (get-class-from-json (http-request-json url))))
+    (results-classes class)))
 
 (defun http-request-json (url)
   (with-open-stream (stream (http-request url
@@ -46,6 +175,30 @@
                                           :want-stream t))
     (cl-json:decode-json-from-source
      stream)))
+
+(defun json-file-tester (class)
+  (with-open-file
+      (stream
+       (cat
+        "~/common-lisp/recycling/recycling_classification/ui/resources/testing/"
+        class
+        ".json"))
+    (cl-json:decode-json-from-source stream)))
+
+(open-file-tester "metals")
+
+;; (http-request-json
+;;  "http://3.134.39.167/predict_recylable_from_image_url?url=https://noahquanrud.com/recycling/resources/images/metal.jpg"
+;;  )
+
+;; (classify-photo-url
+;;  "http://3.134.39.167/predict_recylable_from_image_url?url=https://noahquanrud.com/recycling/resources/images/metal.jpg")
+
+(get-probability-from-json
+ (with-open-file
+     (stream
+      "~/common-lisp/recycling/recycling_classification/ui/resources/testing/ex.json")
+   (cl-json:decode-json-from-source stream)))
 
 ;; (defun metal-subcategories (subcategory)
 ;;   (cond

@@ -13,8 +13,96 @@ body{
       }
     }
     .page-contents-results{
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      border-bottom: 2vh solid #026928;
+      border-left: 1vw solid #026928;
+      border-right: 1vw solid #026928;
+      background: #026928;
+      grid-gap: 1.5vw;
+      .photo-analysis-image-results{
+        background: white;
+        border-top: .75vh solid #FFE303;
+        border-left: .3vw solid #FFE303;
+        border-right: .3vw solid #FFE303;
+      }
+      .photo-analysis-results-info{
+        width: 38vw;
+        display: grid;
+        grid-template-rows:1fr 1fr;
+        grid-gap: 1.5vh;
+        .recycling-process{
+          background: white;
+          border-top: .75vh solid #FFE303;
+          border-left: .3vw solid #FFE303;
+          border-right: .3vw solid #FFE303;
+          border-bottom: .75vh solid #FFE303;
+          color: #026928;
+          h2{
+            font-size: 4vw;
+            text-align: center;
+            color: #026928;
+            margin: 0;
+          }
+          ul{
+            margin:0;
+            color:#026928;
+            padding-left:2vw;
+          }
+        }
+        .recycling-information{
+          background: white;
+          border-top: .75vh solid #FFE303;
+          border-left: .3vw solid #FFE303;
+          border-right: .3vw solid #FFE303;
+          border-bottom: .75vh solid #FFE303;
+          color: #026928;
+          h2{
+            font-size: 4vw;
+            text-align: center;
+            color: #026928;
+            margin: 0;
+          }
+          ul{
+            margin:0;
+            color:#026928;
+            padding-left:2vw;
+          }
+        }
+      }
+      .photo-analysis-results{
+        .recyclable-result{
+          .recyclable-classification{
+            background:rgba(255,227,3,0.8);
+            width:57.3vw;
+            height:8vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6vh;
+            position: absolute;
+            top: 20vh;
+            font-weight: bolder;
+            color: #026928;
+          }
+          .recyclable-confidence{
+            background:rgba(255,227,3,0.9);
+            width:57.3vw;
+            height:4vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3vh;
+            position: absolute;
+            color: #026928;
+            bottom:1.25vh;
+          }
+        }
+      }
       img{
-        min-height:100vh;
+        min-height:88vh;
+        max-height:88vh;
+        max-width:57.3vw;
         display:block;
         margin: auto;
       }
@@ -98,9 +186,9 @@ body{
         justify-content: space-evenly;
         align-items: center;
         width: 100vw;
-        input{
-          display:none;
-        }
+        /* input{ */
+        /*   display:none; */
+        /* } */
         button{
           border:none;
           font-size: 4vh;
@@ -136,32 +224,32 @@ div.recycling-facts{
     grid-template-rows: repeat(4, 1fr);
     grid-template-columns: 1fr 7fr;
     margin: 2vh 12vw;
-      div{
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border: 2px solid #026928;
-        border-radius: 50%;
-        padding: 1vh 1vw;
-        color: #026928;
-        background: #FFE303;
-        margin: .5vh .5vw;
-        width: 5vw;
-        h4{
-          margin: 0;
-          font-size: 1.25vh;
-        }
-        h3{
-          margin: 0;
-          font-size: 4vh;
-        }
+    div{
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #026928;
+      border-radius: 50%;
+      padding: 1vh 1vw;
+      color: #026928;
+      background: #FFE303;
+      margin: .5vh .5vw;
+      width: 5vw;
+      h4{
+        margin: 0;
+        font-size: 1.25vh;
       }
-      p{
-        font-weight:600;
-        font-size: 3vh;
-        margin-left: 2vw;
+      h3{
+        margin: 0;
+        font-size: 4vh;
       }
+    }
+    p{
+      font-weight:600;
+      font-size: 3vh;
+      margin-left: 2vw;
+    }
   }
 }
 

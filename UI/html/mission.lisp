@@ -61,10 +61,10 @@
       (:div
        ((:class "UI-pages"))
        (:figure
-        (:img ((:src "resources/images/mission/recycling-info.png")))
+        (:img ((:src "resources/pages/mission/recycling-info.png")))
         (:figcaption "Recycling information page"))
        (:figure
-        (:img ((:src "resources/images/mission/upload-photo.png")))
+        (:img ((:src "resources/pages/mission/upload-photo.png")))
         (:figcaption "Upload photo page")
         ))
       (:p "The second part, also the most important part of the three,
@@ -83,10 +83,10 @@
       (:div
        ((:class "AI-photos-works"))
        (:figure
-        (:img ((:src "resources/images/mission/AI2.png")))
+        (:img ((:src "resources/pages/mission/AI2.png")))
         (:figcaption "Model of how AI analyzes input."))
        (:figure
-        (:img ((:src "resources/images/mission/AI1.png")))
+        (:img ((:src "resources/pages/mission/AI1.png")))
         (:figcaption "Example of how AI analyzes an input.")
         )
        )
@@ -102,10 +102,10 @@
       (:div
        ((:class "AI-analyzing"))
        (:figure
-        (:img ((:src "resources/images/mission/AITraining.png")))
+        (:img ((:src "resources/pages/mission/AITraining.png")))
         (:figcaption "Model of how AI is trained from pictures."))
        (:figure
-        (:img ((:src "resources/images/mission/AIAnalyzing.png")))
+        (:img ((:src "resources/pages/mission/AIAnalyzing.png")))
         (:figcaption "Example of how AI analyzes a photo of a battery.")
         )
        )
