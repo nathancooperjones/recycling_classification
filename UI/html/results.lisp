@@ -50,11 +50,11 @@
         (:div
          ((:class "recycling-process"))
          (:h2 "Recycling Process")
-         ,(classes-recycling-process "metals"))
+         ,(classes-recycling-process class probability))
         (:div
          ((:class "recycling-information"))
          (:h2 "Fun Facts")
-         ,(classes-recycling-process "metals"))
+         ,(classes-recycling-process class probability))
         )
        )
      ))
@@ -112,7 +112,7 @@
   (cond
     ((equal class "metals")
      "Classified under metal")
-    ((equal class "paper_cardboard")
+    ((equal class "paper-cardboard")
      "Classified under paper or cardboard")
     ((equal class "glass")
      "Classified under glass")
@@ -136,7 +136,7 @@
 
 (defun photo-analysis-results (class probability)
   (cond
-    ((> probability 75)
+    ((> probability 55)
      `(:div
        ((:class "recyclable-result"))
        (:div ((:class "recyclable-classification")) (:p "Recyclable"))

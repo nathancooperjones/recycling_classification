@@ -6,6 +6,8 @@
     (:li "Remove lids from bottles before recycling (check)")
     (:li "Rinse out bottles with water before recycling")
     (:li "Take your plastics to a recycling center if pickup is unavailable")
+    (:li "If item is a plastic bag DO NOT RECYCLE."
+     )
     )
   )
 
@@ -66,11 +68,11 @@
     )
   )
 
-(defun classes-recycling-process (class)
+(defun classes-recycling-process (class probability)
   (cond
     ((equal class "metals")
      (metals-recycling-process))
-    ((equal class "paper_cardboard")
+    ((equal class "paper-cardboard")
      (paper-recycling-process))
     ((equal class "glass")
      (glass-recycling-process))
@@ -83,6 +85,6 @@
     ((equal class "batteries")
      (batteries-recycling-process))
     ('t
-     nil)
-    )
-  )
+     `(:p "We are only " ,probability "% in our classifcation of the
+    item classified under " ,class ", which does not meet our standard
+    to confidently classify the item. Unless you are sure it is recyclable, it is probably safest to throw this away like you would normal trash. ")) ) )
