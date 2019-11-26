@@ -70,6 +70,10 @@
 
 (defun classes-recycling-process (class probability)
   (cond
+    ((<= probability 40)
+     `(:p "We are only " ,probability "% confident in our classifcation of the
+    item classified under " ,class ", which does not meet our standard
+    to confidently classify the item. Unless you are sure it is recyclable, it is probably safest to throw this away like you would normal trash. "))
     ((equal class "metals")
      (metals-recycling-process))
     ((equal class "paper-cardboard")

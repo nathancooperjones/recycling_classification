@@ -55,7 +55,7 @@
         (:div
          ((:class "recycling-information"))
          (:h2 "Fun Facts")
-         ,(classes-recycling-process class probability))
+         ,(classes-recycling-facts class))
         )
        )
      ))
@@ -126,7 +126,7 @@
 
 (defun photo-analysis-results (class probability)
   (cond
-    ((> probability 55)
+    ((> probability 40)
      `(:div
        ((:class "recyclable-result"))
        (:div ((:class "recyclable-classification")) (:p "Recyclable"))
