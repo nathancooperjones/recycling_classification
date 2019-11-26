@@ -49,6 +49,92 @@
         (:li "Less than 9% of Chicago’s residential waste is recycled,
              this is the worst rate in the entire United States."))))
      (:div
+      ((:class "How-to-recycle-classes"))
+      (:h2 "What to Watch Out For When Recycling Each Class")
+      (:div
+       ((:class "Recycling-each-class"))
+       (:div
+        ((:class "recycling-plastics-process"))
+        (:h2 "Plastics")
+        ,(plastic-recycling-process))
+       (:div
+        ((:class "recycling-metals-process"))
+        (:h2 "Metals")
+        ,(metals-recycling-process))
+       (:div
+        ((:class "recycling-paper-process"))
+        (:h2 "Paper or Cardboard")
+        ,(paper-recycling-process))
+       (:div
+        ((:class "recycling-glass-process"))
+        (:h2 "Glass")
+        ,(glass-recycling-process))
+       (:div
+        ((:class "recycling-electronics-process"))
+        (:h2 "Electronics")
+        ,(electronics-recycling-process))
+       (:div
+        ((:class "recycling-bulbs-process"))
+        (:h2 "Bulbs")
+        ,(bulbs-recycling-process))
+       (:div
+        ((:class "recycling-batteries-process"))
+        (:h2 "Batteries")
+        ,(batteries-recycling-process))
+       )
+      )
+     (:div
+      ((:class "benefits-incentives-recycling"))
+      (:h2 "Benefits of Recycling and Incentives to Recycle")
+      (:ol
+       (:div
+        ((:class "benefits-recycling-1"))
+        (:li "Recycling conserves natural resources by reducing the
+       dependency on raw resources to create items such as helping
+       save forests by recycling paper."))
+       (:div
+        ((:class "benefits-recycling-2"))
+        (:li "Recycling cuts climate-changing carbon emissions since
+       recycling uses less energy to make new products as well as
+       keeping potentially methane-releasing waste out of landfill
+       sites."))
+       (:div
+        ((:class "benefits-recycling-3"))
+        (:li "Recycling protects ecosystems and wildlife by reducing
+       the need to grow, harvest or extract new raw materials from
+       the Earth."))
+       (:div
+        ((:class "benefits-recycling-4"))
+        (:li "You can make money from recycling (Depending on your
+        state), for instance in California you can earn 5 cents per
+        aluminum can and even make 10 cents per bottle or can in
+        Michigan when turning in the recyclable items to various
+        recycling centers."))
+       (:div
+        ((:class "benefits-recycling-5"))
+        (:li "Recycling reduces incineration which generates carbon
+       emissions, which contribute to climate change, as well as
+       potential air pollution problems."))
+       (:div
+        ((:class "benefits-recycling-6"))
+        (:li "Recycling reduces landfill waste which already releases
+       greenhouse gases such as methane into the atmosphere and also
+       pollutes soil and water by leaching noxious and toxic liquids
+       over time."))
+       (:div
+        ((:class "benefits-recycling-7"))
+        (:li "Recycling has already created over 1.1 million jobs, $236
+       billion in gross annual sales, and $37 billion in annual
+       payroll."))
+       (:div
+        ((:class "benefits-recycling-8"))
+        (:li "Recycling saves energy since making new products from
+       recycled material requires less energy than making them from
+       raw materials, for instance producing new aluminium from
+       old (including recycled cans and foil) uses 95% less energy
+       than making it from scratch."))
+       ))
+     (:div
       ((:class "info-resources"))
       (:h2 "Sources")
       (:ul
@@ -77,13 +163,15 @@
         (:a
          ((:href "https://depauliaonline.com/37248/news/chicago-ranked-worst-major-american-city-for-recycling/"))
          "The DePaulia - 'Chicago ranked worst major American city for
-         recycling' by Ella Lee"))))
-     (:div
-      ((:class "TBD"))
-      (:h2 "To be Added")
-      (:ul
-       (:li "How to recycle and/or instructions to recycle")
-       (:li "Incentives to recycle"))
-      )
-
-     ))  )
+         recycling' by Ella Lee"))
+       (:li
+        (:a
+         ((:href "https://friendsoftheearth.uk/natural-resources/9-benefits-recycling"))
+         "Friends of the Earth - '9 benefits of Recycling'"))
+       (:li
+        (:a
+         ((:href "https://nems.nih.gov/environmental-programs/Pages/Benefits-of-Recycling.aspx"))
+         "National Institute of Health - 'Benefits of Recycling'"))))
+     )
+   )
+  )

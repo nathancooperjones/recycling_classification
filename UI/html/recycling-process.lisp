@@ -44,7 +44,7 @@
 (defun electronics-recycling-process ()
   `(:ul
     ((:class "electronics-recycling-process"))
-    (:li "e-waste is recyclable at retailors such as best buy")
+    (:li "E-waste is recyclable at retailors such as best buy")
     (:li "Search your state for e-waste recyclers")
     (:li "Can always donate unwanted electronics")
     )
@@ -54,7 +54,7 @@
   `(:ul
     ((:class "bulbs-recycling-process"))
     (:li "Incandescent and halogen light bulbs can be thrown in the trash")
-    (:li "store flourescent lights in a cardboard box and transport
+    (:li "Store flourescent lights in a cardboard box and transport
     them to a Home Depot or Ikea to be properly recycled")
     )
   )
@@ -62,7 +62,7 @@
 (defun batteries-recycling-process ()
   `(:ul
     ((:class "batteries-recycling-process"))
-    (:li "Recycled at local electronics retailer, recycling center, or
+    (:li "Recycle at local electronics retailer, recycling center, or
     community center")
     (:li "Check Earth911 to find drop-off locations in your area")
     )
@@ -85,6 +85,6 @@
     ((equal class "batteries")
      (batteries-recycling-process))
     ('t
-     `(:p "We are only " ,probability "% in our classifcation of the
+     `(:p "We are only " ,probability "% confident in our classifcation of the
     item classified under " ,class ", which does not meet our standard
     to confidently classify the item. Unless you are sure it is recyclable, it is probably safest to throw this away like you would normal trash. ")) ) )

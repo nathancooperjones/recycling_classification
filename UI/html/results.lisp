@@ -7,30 +7,31 @@
 ;;              (:img ((:id "uploaded-image") (:src "resources/images/",photo-path)))))
 ;;   )
 
-;; (defun photo-classified-html (photo-path)
-;;   (my-html
-;;    `(:div
-;;      ((:class "page-contents-results"))
-;;      (:div
-;;       ((:class "photo-analysis-image-results"))
-;;       (:div
-;;        ((:class "photo-analysis-results"))
-;;        ,(filler-class-results (ai-analysis-url photo-path)))
-;;       (:img ((:id "uploaded-image") (:src "resources/images/",photo-path))))
-;;      (:div
-;;       ((:class "photo-analysis-results-info"))
-;;       (:div
-;;        ((:class "recycling-process"))
-;;        (:h2 "Recycling Process")
-;;        ,(classes-recycling-process "metals"))
-;;       (:div
-;;        ((:class "recycling-information"))
-;;        (:h2 "Fun Facts")
-;;        ,(classes-recycling-process "metals"))
-;;       )
-;;      )
-;;    )
-;;   )
+(defun photo-classified-html (photo-path)
+  (let ((class (filler-class-choice)))
+    (my-html
+     `(:div
+       ((:class "page-contents-results"))
+       (:div
+        ((:class "photo-analysis-image-results"))
+        (:div
+         ((:class "photo-analysis-results"))
+         ,(filler-class-results class))
+        (:img ((:id "uploaded-image") (:src "resources/images/",photo-path))))
+       (:div
+        ((:class "photo-analysis-results-info"))
+        (:div
+         ((:class "recycling-process"))
+         (:h2 "Recycling Process")
+         ,(classes-recycling-process class 90))
+        (:div
+         ((:class "recycling-information"))
+         (:h2 "Fun Facts")
+         ,(classes-recycling-facts class))
+        )
+       )
+     ))
+  )
 
 (defun photo-classified-html (photo-path)
   (let* ((json (http-request-json (ai-analysis-url (cat photo-path))))
@@ -66,40 +67,31 @@
         80
         60)))
 
-(defun filler-class-results (url)
-  (let ((number (random 7))
-        (percentage (filler-percentage)))
+(defun filler-class-choice ()
+  (let ((number (random 8)))
     (cond
       ((equal number 0)
-       (json-analysis-results (json-file-tester "metals"))
-       ;(photo-analysis-results "metals" percentage)
-       )
+       "metals")
       ((equal number 1)
-       (json-analysis-results (json-file-tester "paper_cardboard"))
-       ;(photo-analysis-results "paper_cardboard" percentage)
-       )
+       "paper-cardboard")
       ((equal number 2)
-       (json-analysis-results (json-file-tester "glass"))
-       ;(photo-analysis-results "glass" percentage)
-       )
+       "glass")
       ((equal number 3)
-       (json-analysis-results (json-file-tester "plastics"))
-       ;(photo-analysis-results "plastics" percentage)
-       )
+       "plastics")
       ((equal number 4)
-       (json-analysis-results (json-file-tester "bulbs"))
-       ;(photo-analysis-results "bulbs" percentage)
-       )
+       "bulbs")
       ((equal number 5)
-       (json-analysis-results (json-file-tester "electronics"))
-       ;(photo-analysis-results "electronics" percentage)
-       )
+       "electronics")
       ((equal number 6)
-       (json-analysis-results (json-file-tester "batteries"))
-       ;(photo-analysis-results "batteries" percentage)
-       )
+       "batteries")
+      ((equal number 7)
+       "unclassified")
       )
     )
+  )
+
+(defun filler-class-results (class)
+  (json-analysis-results (json-file-tester class))
   )
 
 (defparameter *analyze-photo-url-base*
@@ -111,21 +103,19 @@
 (defun results-classes (class)
   (cond
     ((equal class "metals")
-     "Classified under metal")
+     "Metal")
     ((equal class "paper-cardboard")
-     "Classified under paper or cardboard")
+     "Paper or Cardboard")
     ((equal class "glass")
-     "Classified under glass")
+     "Glass")
     ((equal class "plastics")
-     "Classified under plastics")
+     "Plastics")
     ((equal class "bulbs")
-     "Classified under bulbs")
+     "Bulbs")
     ((equal class "electronics")
-     "Classified under electronics")
+     "Electronics")
     ((equal class "batteries")
-     "Classified under batteries")
-    ('t
-     "Classified under non-recyclable")
+     "Batteries")
     )
   )
 
@@ -141,7 +131,8 @@
        ((:class "recyclable-result"))
        (:div ((:class "recyclable-classification")) (:p "Recyclable"))
        (:div ((:class "recyclable-confidence"))
-             (:p ,(results-classes class) " with "
+             (:p "Classified under "
+                 (:b ,(results-classes class)) " with "
                  ,(format-probability probability) "% confidence")))
      )
     ('t

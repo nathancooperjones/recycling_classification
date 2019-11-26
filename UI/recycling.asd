@@ -15,6 +15,7 @@
                 ((:file "packages")
                  (:file "wrappers")
                  (:file "recycling-process")
+                 (:file "recycling-facts")
                  (:file "upload-photo")
                  (:file "information")
                  (:file "mission")
