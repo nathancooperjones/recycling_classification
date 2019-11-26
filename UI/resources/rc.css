@@ -138,14 +138,18 @@
   body .container .page-contents-results .photo-analysis-results .recyclable-result .recyclable-confidence {
     background: rgba(255, 227, 3, 0.9);
     width: 97.4vw;
-    height: 6vh;
+    height: 14vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3.75vw;
+    font-size: 6vw;
+    text-align: center;
     position: absolute;
     color: #026928;
     bottom: 0;
+  }
+  body .container .page-contents-results .photo-analysis-results .recyclable-result .recyclable-confidence p {
+    padding: 0 4vw;
   }
   body .container .page-contents-results img {
     min-height: 88vh;
