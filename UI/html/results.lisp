@@ -27,7 +27,7 @@
         (:div
          ((:class "recycling-information"))
          (:h2 "Fun Facts")
-         ,(classes-recycling-facts class))
+         ,(classes-recycling-facts class 90))
         )
        )
      ))

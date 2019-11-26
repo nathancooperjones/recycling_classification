@@ -104,7 +104,7 @@
   }
   body .container .page-contents-results .photo-analysis-results-info .recycling-information ul li {
     padding-bottom: 1.25vh;
-    line-height: 2.5vh;
+    line-height: 3.25vh;
   }
   body .container .page-contents-results .photo-analysis-results-info .recycling-information ul li::before {
     content: "•";
