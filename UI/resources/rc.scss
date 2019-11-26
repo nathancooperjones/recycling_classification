@@ -292,7 +292,6 @@
         color: #026928;
         background: #FFE303;
         margin: .5vh .5vw;
-        width: 5vw;
         h4{
           margin: 0;
           font-size: 1.25vh;
@@ -304,8 +303,9 @@
       }
       p{
         font-weight:600;
-        font-size: 3vh;
+        font-size: 3vw;
         margin-left: 2vw;
+        align-self: center;
       }
     }
   }
@@ -320,24 +320,25 @@
       text-align:center;
     }
     div.recycling-chicago-information{
-      display:flex;
       margin: 3vh 2vw;
       figure{
         margin: 0;
         img{
-          max-width: 60vw;
+          max-width: 96vw;
         }
         figcaption{
           text-align: center;
+          font-size:2.75vw;
         }
       }
       ul{
         margin-left: 2vw;
         display:flex;
         flex-direction:column;
+        padding: 0 4vw;
         li{
           padding-bottom: 1.25vh;
-          font-size: 3vh;
+          font-size: 3vw;
         }
       }
     }
@@ -349,7 +350,7 @@
       background: #FFE303;
       margin-bottom: 0;
       padding:2vh 6vw;
-      font-size: 4vh;
+      font-size: 3vw;
       text-align:center;
     }
     div.recycling-each-class{
@@ -399,6 +400,9 @@
           padding-left: 4vw;
           margin:0;
           padding-right: 4vw;
+          li{
+            font-size: 2vw;
+          }
         }
       }
     }
@@ -425,6 +429,9 @@
         padding-left: 0.5vw;
         padding-right: 3vw;
         align-self: center;
+        li{
+          font-size: 2.25vw;
+        }
       }
       .benefits-recycling-1{
         grid-row:1;
@@ -476,7 +483,7 @@
       flex-direction:column;
       li{
         padding-bottom: 1.25vh;
-        font-size: 3vh;
+        font-size: 3vw;
         a{
           color:#026928;
         }

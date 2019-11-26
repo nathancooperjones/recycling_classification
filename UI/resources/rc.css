@@ -287,7 +287,6 @@
     color: #026928;
     background: #FFE303;
     margin: 0.5vh 0.5vw;
-    width: 5vw;
   }
   div.recycling-facts div.recycling-facts-list div h4 {
     margin: 0;
@@ -299,8 +298,9 @@
   }
   div.recycling-facts div.recycling-facts-list p {
     font-weight: 600;
-    font-size: 3vh;
+    font-size: 3vw;
     margin-left: 2vw;
+    align-self: center;
   }
 
   div.recycling-chicago h2 {
@@ -312,26 +312,27 @@
     text-align: center;
   }
   div.recycling-chicago div.recycling-chicago-information {
-    display: flex;
     margin: 3vh 2vw;
   }
   div.recycling-chicago div.recycling-chicago-information figure {
     margin: 0;
   }
   div.recycling-chicago div.recycling-chicago-information figure img {
-    max-width: 60vw;
+    max-width: 96vw;
   }
   div.recycling-chicago div.recycling-chicago-information figure figcaption {
     text-align: center;
+    font-size: 2.75vw;
   }
   div.recycling-chicago div.recycling-chicago-information ul {
     margin-left: 2vw;
     display: flex;
     flex-direction: column;
+    padding: 0 4vw;
   }
   div.recycling-chicago div.recycling-chicago-information ul li {
     padding-bottom: 1.25vh;
-    font-size: 3vh;
+    font-size: 3vw;
   }
 
   div.how-to-recycle-classes h2 {
@@ -339,7 +340,7 @@
     background: #FFE303;
     margin-bottom: 0;
     padding: 2vh 6vw;
-    font-size: 4vh;
+    font-size: 3vw;
     text-align: center;
   }
   div.how-to-recycle-classes div.recycling-each-class {
@@ -392,6 +393,9 @@
     margin: 0;
     padding-right: 4vw;
   }
+  div.how-to-recycle-classes div.recycling-each-class div ul li {
+    font-size: 2vw;
+  }
 
   div.benefits-incentives-recycling h2 {
     color: #026928;
@@ -414,6 +418,9 @@
     padding-left: 0.5vw;
     padding-right: 3vw;
     align-self: center;
+  }
+  div.benefits-incentives-recycling ol div li {
+    font-size: 2.25vw;
   }
   div.benefits-incentives-recycling ol .benefits-recycling-1 {
     grid-row: 1;
@@ -463,7 +470,7 @@
   }
   div.info-resources ul li {
     padding-bottom: 1.25vh;
-    font-size: 3vh;
+    font-size: 3vw;
   }
   div.info-resources ul li a {
     color: #026928;
