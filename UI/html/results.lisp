@@ -7,7 +7,7 @@
 ;;              (:img ((:id "uploaded-image") (:src "resources/images/",photo-path)))))
 ;;   )
 
-(defun photo-classified-html (photo-path)
+(defun photo-classified-example-html (photo-path)
   (let ((class (filler-class-choice)))
     (my-html
      `(:div
