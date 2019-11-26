@@ -74,9 +74,9 @@
 (defun batteries-recycling-facts ()
   `(:ul
     ((:class "batteries-recycling-facts"))
-    (:li "Recycling will help conserve of natural resources, such as
+    (:li "Recycling will help conservation of natural resources, such as
     metals and minerals")
-    (:li "Recycling Batteries reduces greenhouse gas emissions that
+    (:li "Recycling Batteries reduce greenhouse gas emissions that
     contribute to global climate change")
     (:li "Batteries can leak heavy harmful metals which contaminate
     our local soils, groundwater, and streams")
@@ -93,8 +93,10 @@
     (:li "The U.S. recycling levels have not improved in 20 years")
     (:li "U.S. generates more waste than any other country in the world")) )
 
-(defun classes-recycling-facts (class)
+(defun classes-recycling-facts (class probability)
   (cond
+    ((< probability 40)
+     (general-recycling-facts))
     ((equal class "metals")
      (metals-recycling-facts))
     ((equal class "paper-cardboard")
@@ -110,4 +112,4 @@
     ((equal class "batteries")
      (batteries-recycling-facts))
     ('t
-     (general-recycling-facts)) ) )
+     (general-recycling-facts))))
