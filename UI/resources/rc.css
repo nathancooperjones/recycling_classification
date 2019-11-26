@@ -481,7 +481,8 @@
 
   div.AI-photos-works {
     display: flex;
-    align-items: baseline;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
   }
   div.AI-photos-works figure figcaption {
@@ -489,32 +490,34 @@
   }
   div.AI-photos-works figure img {
     border: 1px solid #026928;
-    max-height: 50vh;
+    max-height: 30vh;
   }
 
   div.UI-pages {
     display: flex;
-    align-items: baseline;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
   }
   div.UI-pages figure figcaption {
     text-align: center;
   }
   div.UI-pages figure img {
-    max-width: 40vw;
+    max-width: 90vw;
     border: 1px solid #026928;
   }
 
   div.AI-analyzing {
     display: flex;
-    align-items: baseline;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
   }
   div.AI-analyzing figure figcaption {
     text-align: center;
   }
   div.AI-analyzing figure img {
-    width: 40vw;
+    width: 90vw;
     height: 25vh;
     border: 1px solid #026928;
   }
@@ -522,29 +525,29 @@
   div.mission-page-contents div.goal h2 {
     padding: 2vh 6vw;
     background: #FFE303;
-    font-size: 4vh;
+    font-size: 6vw;
   }
   div.mission-page-contents div.goal p {
     margin: 1vh 12vw;
-    font-size: 3vh;
+    font-size: 3vw;
   }
   div.mission-page-contents div.method h2 {
-    font-size: 6vh;
+    font-size: 6vw;
     padding: 2vh 4vw;
     background: #FFE303;
   }
   div.mission-page-contents div.method p {
     margin: 1vh 12vw;
-    font-size: 3vh;
+    font-size: 3vw;
   }
   div.mission-page-contents div.helpful h2 {
-    font-size: 4vh;
+    font-size: 6vw;
     padding: 2vh 6vw;
     background: #FFE303;
   }
   div.mission-page-contents div.helpful p {
     margin: 1vh 12vw;
-    font-size: 3vh;
+    font-size: 3vw;
   }
 }
 @media only screen and (min-width: 800px) {
