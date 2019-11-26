@@ -91,6 +91,9 @@ def predict_recylable_from_image_url():
         abort(400, 'Issue getting model prediction for image. Check API docs for usage.')
 
     try:
+        g.log = g.log.bind(pred_class=pred_class.obj,
+                           pred_probability=max(pred_probs.tolist()),
+                           pred_probability_list=pred_probs.tolist())
         output = {
             'url': url,
             'class': pred_class.obj,
