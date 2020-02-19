@@ -7,7 +7,6 @@ gunicorn
 jupyterlab
 Pillow
 requests
-s3fs
 structlog
 torch
 torchvision

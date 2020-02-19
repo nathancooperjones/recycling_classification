@@ -11,7 +11,7 @@ Using `fastai`'s deep learning library, this is a small project made to do just 
 ### App Functionality Checklist
 - [X] Curate initial dataset
 - [X] Create preliminary deep learning model with this initial dataset
-- [ ] Set up Flask app to accept images and return predicted recyclable class
+- [X] Set up Flask app to accept images and return predicted recyclable class
 - [ ] Advance image dataset to include more real-world examples, more categories, etc.
 - [ ] Create more advanced deep learning model with this newer dataset
 - [ ] Use object detection model to determine recyclable class for many objects in an image
@@ -34,10 +34,15 @@ docker run \
     -v "${RECYCLE_DATA_PATH}:/data" \
     -v "${PWD}:/recycling_classification" \
     -p 8888:8888 \
-    -p 8000:8000 \
+    -p 80:80 \
     -e AWS_ACCESS_KEY_ID="$(aws --profile default configure get aws_access_key_id)" \
     -e AWS_SECRET_ACCESS_KEY="$(aws --profile default configure get aws_secret_access_key)" \
     recycling_classification /bin/bash -c "pip install -r requirements-dev.txt && bash"
+```
+
+Note: If you want to override which model is downloaded, you can set the S3 path(s) for the object by passing an environment variable in with the `docker run` command, e.g.
+```bash
+    -e MODEL_FILENAME="other/url/here/new_model.pkl" \
 ```
 
 Before starting the app, download the desired model and mapping dictionary with:
@@ -56,7 +61,7 @@ bash run_app.sh
 
 In either setup, we can still make requests to the service with
 ```bash
-curl -X GET http://0.0.0.0:8000/health
+curl -X GET http://0.0.0.0:80/health
 ```
 
 ### Start Jupyter Lab
@@ -65,3 +70,30 @@ To run jupyterlab, start the container and execute the following:
 jupyter lab --ip 0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''
 ```
 Connect to Jupyter here: [http://localhost:8888/tree?](http://localhost:8888/tree?)
+
+## Unit Tests
+There are two types of unit tests in this repo to be run in the Docker container:
+
+1. Library Unit Tests
+2. RESTful API Unit Tests
+
+#### Run Library Unit Tests
+```bash
+# execute unit tests
+pytest -v tests/recycling_classification
+```
+
+#### Run RESTful API Unit Tests
+```bash
+# Start a tmux multiplexer
+tmux
+
+# Start API service
+bash entrypoint.sh
+
+# split terminal window in tmux
+# ctrl + b , "
+
+# In new terminal window
+pytest -v tests/app
+```
